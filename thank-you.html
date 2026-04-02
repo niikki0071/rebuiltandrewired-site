@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Blueprint Is Ready — Rebuilt & Rewired</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .ty-hero {
+            background: var(--navy-deep);
+            background-image:
+                radial-gradient(ellipse 80% 50% at 50% 50%, var(--navy) 0%, var(--navy-deep) 70%),
+                radial-gradient(circle at 20% 30%, rgba(192, 152, 83, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(192, 152, 83, 0.04) 0%, transparent 40%);
+            padding: 9rem 1.5rem 5rem;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ty-card {
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        .ty-check {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--gold-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            animation: scaleIn 0.5s ease;
+        }
+
+        .ty-check svg {
+            width: 36px;
+            height: 36px;
+            color: var(--navy);
+        }
+
+        .ty-card h1 {
+            color: var(--white);
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .ty-card .subtitle {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.55);
+            font-style: italic;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 2.5rem;
+            background: var(--gold-gradient);
+            color: var(--navy);
+            border-radius: 8px;
+            font-family: 'Libre Franklin', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-decoration: none;
+            box-shadow: 0 4px 24px rgba(192, 152, 83, 0.35);
+            transition: all 0.25s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(192, 152, 83, 0.45);
+            filter: brightness(1.05);
+        }
+
+        .download-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .ty-note {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.35);
+            line-height: 1.6;
+        }
+
+        .ty-divider {
+            width: 40px;
+            height: 1px;
+            background: rgba(180, 149, 84, 0.3);
+            margin: 2.5rem auto;
+        }
+
+        .ty-next h2 {
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 1.25rem;
+        }
+
+        .ty-steps {
+            list-style: none;
+            text-align: left;
+            max-width: 380px;
+            margin: 0 auto;
+        }
+
+        .ty-steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.875rem;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .ty-steps li .step-num {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--gold);
+            flex-shrink: 0;
+            margin-top: 0.1em;
+        }
+
+        .ty-social {
+            margin-top: 2.5rem;
+        }
+
+        .ty-social p {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 0.75rem;
+        }
+
+        @keyframes scaleIn {
+            0% { transform: scale(0); opacity: 0; }
+            60% { transform: scale(1.15); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .ty-hero {
+                padding: 7rem 1.5rem 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ NAV ═══ -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-brand">
+                <img src="logo.png" alt="R&R" class="nav-logo">
+                <span class="nav-brand-text">Rebuilt & Rewired</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ═══ THANK YOU ═══ -->
+    <section class="ty-hero">
+        <div class="ty-card">
+            <!-- Animated checkmark -->
+            <div class="ty-check">
+                <svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+            </div>
+
+            <h1>You're in. Let's build.</h1>
+            <p class="subtitle">
+                Your copy of The Restart Blueprint is ready.<br>
+                Download it, print it, start today.
+            </p>
+
+            <!-- DOWNLOAD BUTTON -->
+            <a href="https://twlsowcbrppdnvckosxg.supabase.co/storage/v1/object/public/products/rebuilt-rewired/The_Restart_Blueprint_REWIRE_Method.pdf" class="download-btn" id="download-btn" download>
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
+                Download Your Blueprint (PDF)
+            </a>
+
+            <p class="ty-note">
+                Bookmark this page — your download lives here.<br>
+                No login needed. Come back anytime.
+            </p>
+
+            <div class="ty-divider"></div>
+
+            <!-- WHAT TO DO NEXT -->
+            <div class="ty-next">
+                <h2>Your first 3 moves</h2>
+                <ol class="ty-steps">
+                    <li>
+                        <span class="step-num">1</span>
+                        <span>Open the Blueprint and read the intro (5 minutes)</span>
+                    </li>
+                    <li>
+                        <span class="step-num">2</span>
+                        <span>Start with Step R — the Unfair Advantage Audit worksheet</span>
+                    </li>
+                    <li>
+                        <span class="step-num">3</span>
+                        <span>Follow along on Instagram for weekly build-in-public updates</span>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- SOCIAL -->
+            <div class="ty-social">
+                <p>Come build with us</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/rebuiltandrewired" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://tiktok.com/@rebuiltandrewired" target="_blank" rel="noopener">TikTok</a>
+                    <a href="https://rebuiltrewired.substack.com" target="_blank" rel="noopener">Substack</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer">
+        <div class="container">
+            <p>
+                &copy; 2026 Nicole Morales / Rebuilt &amp; Rewired. All rights reserved.<br>
+                <a href="mailto:hello@rebuiltandrewired.com">hello@rebuiltandrewired.com</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
