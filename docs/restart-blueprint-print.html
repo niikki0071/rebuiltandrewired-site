@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Restart Blueprint — The REWIRE Method</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400;1,700&family=Libre+Franklin:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
+
+/* ============ PAGE & PRINT SETUP ============ */
+@page {
+  size: letter;
+  margin: 0.6in 0.75in;
+}
+
+@media print {
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page-break { page-break-before: always; }
+  .no-break { page-break-inside: avoid; }
+}
+
+/* ============ ROOT VARIABLES ============ */
+:root {
+  --navy: #0A0E5D;
+  --navy-deep: #060b54;
+  --gold: #B49554;
+  --gold-light: #e8c97a;
+  --gold-dark: #a07840;
+  --cream: #EDECE1;
+  --cream-light: #F8F7F4;
+  --coral: #C4644E;
+  --dark: #1A1A2E;
+  --gold-gradient: linear-gradient(135deg, #c09853 0%, #e8c97a 40%, #c09853 60%, #a07840 100%);
+}
+
+/* ============ BASE ============ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 10pt;
+  line-height: 1.55;
+  color: var(--dark);
+  background: #fff;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+/* ============ UTILITIES ============ */
+.gold-bar {
+  height: 3px;
+  background: var(--gold-gradient);
+  border: none;
+  margin: 14px 0;
+}
+.gold-bar-thick {
+  height: 5px;
+  background: var(--gold-gradient);
+  border: none;
+  margin: 18px 0;
+}
+.gold-bar-thin {
+  height: 1.5px;
+  background: var(--gold-gradient);
+  border: none;
+  margin: 10px 0;
+}
+
+/* ============ COVER PAGE ============ */
+.cover {
+  min-height: 9.8in;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--navy-deep);
+  color: #fff;
+  padding: 0.5in 0.6in;
+  margin: -0.6in -0.75in;
+  margin-bottom: 0;
+}
+.cover .monogram {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 700;
+  font-size: 32pt;
+  letter-spacing: 6px;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 28px;
+}
+.cover .monogram-border {
+  width: 80px;
+  height: 80px;
+  border: 2.5px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30px;
+}
+.cover h1 {
+  font-size: 28pt;
+  color: #fff;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.cover .subtitle {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 16pt;
+  font-style: italic;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+.cover .tagline {
+  font-size: 11pt;
+  color: var(--cream);
+  max-width: 5.5in;
+  margin: 0 auto 30px;
+  line-height: 1.5;
+}
+.cover .gold-line {
+  width: 200px;
+  height: 2px;
+  background: var(--gold-gradient);
+  margin: 20px auto;
+}
+.cover .quote {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 12pt;
+  color: var(--gold-light);
+  max-width: 5in;
+  margin: 8px auto;
+  line-height: 1.5;
+}
+.cover .author {
+  font-size: 10.5pt;
+  color: var(--cream);
+  margin-top: 24px;
+  letter-spacing: 1px;
+}
+.cover .website {
+  font-size: 9pt;
+  color: var(--gold);
+  margin-top: 8px;
+  letter-spacing: 1.5px;
+}
+.cover .copyright {
+  font-size: 7pt;
+  color: rgba(255,255,255,0.45);
+  max-width: 4.8in;
+  margin-top: 30px;
+  line-height: 1.5;
+}
+
+/* ============ FOOTER ============ */
+@page {
+  @bottom-center {
+    content: "© 2026 Rebuilt & Rewired | rebuiltandrewired.com | All Rights Reserved";
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 7pt;
+    color: #999;
+  }
+}
+.page-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 7pt;
+  color: #999;
+  padding: 8px 0;
+}
+.footer-inline {
+  text-align: center;
+  font-size: 7pt;
+  color: #999;
+  padding: 20px 0 4px;
+  border-top: 1px solid #e0dfd4;
+  margin-top: 30px;
+}
+
+/* ============ LEGAL PAGE ============ */
+.legal {
+  padding: 0.4in 0;
+}
+.legal h2 {
+  font-size: 14pt;
+  margin-bottom: 16px;
+  color: var(--navy);
+}
+.legal p {
+  font-size: 9pt;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  color: #444;
+}
+
+/* ============ SECTION HEADERS (Navy) ============ */
+.section-header {
+  background: var(--navy-deep);
+  color: #fff;
+  padding: 28px 30px 24px;
+  margin: 0 -0.75in;
+  margin-top: 0;
+  text-align: center;
+}
+.section-header .step-label {
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 9pt;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.section-header h2 {
+  font-size: 22pt;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.section-header .step-word {
+  font-size: 14pt;
+  color: var(--gold-light);
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+}
+.section-header .step-subtitle {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 11pt;
+  color: var(--cream);
+  margin-top: 8px;
+}
+
+/* ============ CONTENT ============ */
+.content {
+  padding: 20px 0;
+}
+.content p {
+  margin-bottom: 10px;
+}
+.content h3 {
+  font-size: 13pt;
+  color: var(--navy);
+  margin: 18px 0 8px;
+}
+.content h4 {
+  font-size: 11pt;
+  color: var(--navy);
+  margin: 14px 0 6px;
+}
+.content ul, .content ol {
+  margin: 8px 0 12px 20px;
+}
+.content li {
+  margin-bottom: 4px;
+}
+
+/* ============ PULL QUOTE ============ */
+.pull-quote {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 12pt;
+  color: var(--gold-dark);
+  text-align: center;
+  padding: 16px 30px;
+  margin: 16px 0;
+  border-top: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+  line-height: 1.5;
+}
+
+/* ============ ADHD CALLOUT ============ */
+.adhd-callout {
+  background: var(--cream);
+  border-left: 4px solid var(--gold);
+  padding: 14px 18px;
+  margin: 14px 0;
+  border-radius: 0 6px 6px 0;
+}
+.adhd-callout .callout-label {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 700;
+  font-size: 9.5pt;
+  color: var(--gold-dark);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+.adhd-callout p {
+  font-size: 9.5pt;
+  color: #333;
+  margin-bottom: 0;
+}
+
+/* ============ TRACK LABELS ============ */
+.track-section {
+  margin: 14px 0;
+  padding: 12px 16px;
+  border-radius: 6px;
+}
+.track-a {
+  background: rgba(10, 14, 93, 0.04);
+  border-left: 4px solid var(--navy);
+}
+.track-b {
+  background: rgba(196, 100, 78, 0.06);
+  border-left: 4px solid var(--coral);
+}
+.track-label {
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 700;
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  margin-bottom: 4px;
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 3px;
+}
+.track-label-a {
+  background: var(--navy);
+  color: #fff;
+}
+.track-label-b {
+  background: var(--coral);
+  color: #fff;
+}
+
+/* ============ WORKSHEETS ============ */
+.worksheet {
+  background: var(--cream-light);
+  border: 1.5px solid #d9d6c8;
+  border-radius: 8px;
+  padding: 20px 22px;
+  margin: 16px 0;
+}
+.worksheet h3 {
+  font-size: 13pt;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.worksheet h4 {
+  font-size: 10.5pt;
+  color: var(--navy);
+  margin: 12px 0 6px;
+}
+.worksheet-field {
+  background: #fff;
+  border: 1px solid #ccc9b8;
+  border-radius: 4px;
+  min-height: 32px;
+  padding: 6px 10px;
+  margin: 4px 0 10px;
+  font-size: 9pt;
+  color: #888;
+}
+.worksheet-field-large {
+  min-height: 80px;
+}
+.worksheet-field-xl {
+  min-height: 120px;
+}
+.worksheet label {
+  font-size: 9.5pt;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 2px;
+}
+.worksheet .hint {
+  font-size: 8.5pt;
+  color: #777;
+  font-style: italic;
+  margin-bottom: 4px;
+}
+
+/* ============ TABLES ============ */
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 16px;
+  font-size: 9pt;
+}
+.styled-table thead th {
+  background: var(--navy);
+  color: #fff;
+  font-family: 'Libre Franklin', sans-serif;
+  font-weight: 600;
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px 10px;
+  text-align: left;
+}
+.styled-table tbody td {
+  padding: 7px 10px;
+  border-bottom: 1px solid #d9d6c8;
+  background: #fff;
+}
+.styled-table tbody tr:nth-child(even) td {
+  background: var(--cream-light);
+}
+
+/* ============ OVERVIEW GRID ============ */
+.rewire-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 0;
+}
+.rewire-card {
+  background: var(--cream-light);
+  border: 1.5px solid #d9d6c8;
+  border-radius: 6px;
+  padding: 14px 16px;
+}
+.rewire-card .letter {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 700;
+  font-size: 22pt;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+.rewire-card .word {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 700;
+  font-size: 11pt;
+  color: var(--navy);
+}
+.rewire-card .desc {
+  font-size: 8.5pt;
+  color: #555;
+  margin-top: 2px;
+}
+
+/* ============ NUMBERED LIST (Revenue Sprint) ============ */
+.sprint-week {
+  margin: 10px 0;
+  padding-left: 0;
+}
+.sprint-week .week-label {
+  font-family: 'Lora', Georgia, serif;
+  font-weight: 700;
+  font-size: 10.5pt;
+  color: var(--navy);
+}
+.sprint-week p {
+  margin: 2px 0 8px;
+}
+
+/* ============ CHECKLIST ============ */
+.checklist-item {
+  display: flex;
+  align-items: flex-start;
+  margin: 4px 0;
+}
+.checklist-box {
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid #aaa;
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-right: 8px;
+  margin-top: 2px;
+}
+
+/* ============ BACK PAGE ============ */
+.back-page {
+  min-height: 9in;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--navy-deep);
+  color: #fff;
+  padding: 0.5in 0.6in;
+  margin: 0 -0.75in -0.6in;
+}
+.back-page p {
+  max-width: 5in;
+  line-height: 1.6;
+}
+.back-page .closing-quote {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 13pt;
+  color: var(--gold-light);
+  margin: 20px auto;
+  max-width: 4.5in;
+}
+.back-page .links {
+  font-size: 9.5pt;
+  color: var(--cream);
+  margin: 6px 0;
+}
+.back-page .links strong {
+  color: var(--gold);
+}
+.back-page .built-line {
+  font-size: 10pt;
+  color: var(--cream);
+  margin-top: 20px;
+  line-height: 1.6;
+}
+.back-page .dedication {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 10pt;
+  color: var(--gold-light);
+  margin-top: 6px;
+}
+.back-page .final-copyright {
+  font-size: 7.5pt;
+  color: rgba(255,255,255,0.4);
+  margin-top: 30px;
+  line-height: 1.6;
+}
+
+/* ============ INLINE EMPHASIS ============ */
+.gold-text {
+  color: var(--gold-dark);
+  font-weight: 600;
+}
+.navy-text {
+  color: var(--navy);
+  font-weight: 600;
+}
+
+strong {
+  font-weight: 600;
+}
+em {
+  font-style: italic;
+}
+
+/* Fix margins for print full-bleed sections */
+.full-bleed {
+  margin-left: -0.75in;
+  margin-right: -0.75in;
+  padding-left: 0.75in;
+  padding-right: 0.75in;
+}
+/* ============ PRINT-FRIENDLY OVERRIDES ============ */
+/* This version uses white backgrounds to save ink */
+
+/* Cover page */
+.cover {
+  background: #fff !important;
+  color: var(--dark) !important;
+}
+.cover h1 { color: var(--navy) !important; }
+.cover p, .cover .monogram { color: var(--navy) !important; }
+.cover p[style*="gold"], .cover p em, .cover i { color: var(--gold) !important; }
+
+/* Section headers (REWIRE steps) — biggest ink savings */
+.section-header {
+  background: #fff !important;
+  color: var(--navy) !important;
+  border: 2px solid var(--navy) !important;
+  border-left: 6px solid var(--gold) !important;
+}
+.section-header h2 { color: var(--navy) !important; }
+.section-header .step-label { color: var(--gold-dark) !important; }
+.section-header p { color: var(--gold-dark) !important; }
+
+/* Overview header */
+.overview-header {
+  background: #fff !important;
+  color: var(--navy) !important;
+  border: 2px solid var(--navy) !important;
+}
+.overview-header h2 { color: var(--navy) !important; }
+.overview-header p { color: var(--gold-dark) !important; }
+
+/* Track labels — keep small colored badges, they use minimal ink */
+
+/* Table headers — use lighter background */
+.styled-table thead th {
+  background: var(--cream) !important;
+  color: var(--navy) !important;
+}
+
+/* Back/final page */
+.back-page {
+  background: #fff !important;
+  color: var(--dark) !important;
+}
+.back-page h2 { color: var(--navy) !important; }
+.back-page p { color: var(--dark) !important; }
+.back-page .closing-quote { color: var(--gold) !important; }
+</style>
+</head>
+<body>
+
+<!-- ================================================================ -->
+<!-- COVER PAGE -->
+<!-- ================================================================ -->
+<div class="cover">
+  <div class="monogram-border">
+    <div class="monogram">R&R</div>
+  </div>
+  <h1>The Restart Blueprint</h1>
+  <div class="subtitle">The REWIRE Method</div>
+  <div class="gold-line"></div>
+  <div class="tagline">A 6-Step System for Women Rebuilding After Career or Life Disruption</div>
+  <div class="quote">"Your brain isn't broken. Your systems are."</div>
+  <div class="quote">"You don't need a new career — you need to rewire how you approach rebuilding."</div>
+  <div class="gold-line"></div>
+  <div class="author">By Nicole Morales | Rebuilt &amp; Rewired</div>
+  <div class="website">rebuiltandrewired.com</div>
+  <div class="copyright">© 2026 Rebuilt &amp; Rewired. All rights reserved. This Blueprint is for personal use only. Unauthorized reproduction, distribution, or sharing is prohibited.</div>
+</div>
+
+<!-- ================================================================ -->
+<!-- LEGAL PAGE -->
+<!-- ================================================================ -->
+<div class="page-break"></div>
+<div class="legal">
+  <h2>Legal Notice</h2>
+  <hr class="gold-bar">
+  <p>© 2026 Nicole Morales / Rebuilt &amp; Rewired. All rights reserved.</p>
+  <p>No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the author, except for brief quotations in reviews and certain other noncommercial uses permitted by copyright law.</p>
+  <p><strong>Disclaimer:</strong> The information in this Blueprint is for educational purposes only and does not constitute legal, financial, or professional advice. Individual results may vary. The author makes no guarantees regarding income or business outcomes.</p>
+  <p>The REWIRE Method™ is a trademark of Rebuilt &amp; Rewired.</p>
+  <p>For permissions, contact: <strong>hello@rebuiltandrewired.com</strong></p>
+</div>
+
+<!-- ================================================================ -->
+<!-- BEFORE YOU START -->
+<!-- ================================================================ -->
+<div class="page-break"></div>
+<div class="content">
+  <div class="section-header full-bleed" style="margin-bottom: 20px;">
+    <h2>Before You Start</h2>
+  </div>
+
+  <p>If you're holding this, something broke. Maybe you got fired. Maybe you walked away. Maybe life blew up in a way nobody warned you about — divorce, a health crisis, a company that didn't give a damn about you after years of loyalty.</p>
+
+  <p>And now you're Googling things at 2 AM like "how to make money fast" and "starting over at 40" and getting buried in conflicting advice from people who've never had to rebuild from the floor.</p>
+
+  <p>I've been there. Wrongful termination. Single parent. ADHD brain that was misdiagnosed for decades as anxiety. Bills don't care about your healing timeline.</p>
+
+  <p>This Blueprint is not another motivational workbook. There are no vision boards in here. No "just believe in yourself" affirmations. This is a system — six concrete steps to go from stuck to earning, built specifically for women whose brains don't work the way traditional business advice assumes.</p>
+
+  <hr class="gold-bar">
+
+  <h3>Who This Is For:</h3>
+  <ul>
+    <li>Women rebuilding after job loss, wrongful termination, divorce, or health crisis</li>
+    <li>Women with ADHD or executive function challenges who freeze when overwhelmed</li>
+    <li>Women with existing small businesses who are burning out doing everything manually</li>
+    <li>Women who have skills but can't figure out how to turn them into income</li>
+    <li>Women who are tired of $997 courses that promise passive income and deliver nothing</li>
+  </ul>
+
+  <hr class="gold-bar-thin">
+
+  <h3>How to Use This Blueprint:</h3>
+  <p>Work through the six REWIRE steps in order. Each step has teaching content, then a worksheet. Do the worksheets. Not later. Not when you feel ready. Now. Messy is fine. Incomplete is fine. Done beats perfect every single time.</p>
+
+  <div class="adhd-callout">
+    <div class="callout-label">ADHD Brain Hack</div>
+    <p>If you have ADHD: each step is designed to be completable in one focused session (30–60 minutes). If you stall, skip to the worksheet and fill in what you can. Movement creates clarity. Clarity does not create movement.</p>
+  </div>
+
+  <hr class="gold-bar-thin">
+
+  <h3>Two Tracks Inside This Blueprint:</h3>
+
+  <div class="track-section track-a">
+    <span class="track-label track-label-a">Track A</span>
+    <h4 style="margin-top: 6px;">Starting From Zero</h4>
+    <p>You lost your income source. You don't have a business. You need to figure out what you can sell and who will pay for it. Start with Step R and go in order.</p>
+  </div>
+
+  <div class="track-section track-b">
+    <span class="track-label track-label-b">Track B</span>
+    <h4 style="margin-top: 6px;">Existing Business</h4>
+    <p>You have a business but it's held together with duct tape and adrenaline. You need systems, AI tools, and a way to stop doing everything yourself. Each step has a Track B section for you.</p>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- THE REWIRE METHOD OVERVIEW -->
+<!-- ================================================================ -->
+<div class="page-break"></div>
+<div class="content">
+  <div class="section-header full-bleed" style="margin-bottom: 20px;">
+    <h2>The REWIRE Method</h2>
+    <div class="step-subtitle">Overview</div>
+  </div>
+
+  <div class="rewire-grid">
+    <div class="rewire-card">
+      <div class="letter">R</div>
+      <div class="word">RECOGNIZE</div>
+      <div class="desc">Your Unfair Advantage</div>
+    </div>
+    <div class="rewire-card">
+      <div class="letter">E</div>
+      <div class="word">ELIMINATE</div>
+      <div class="desc">The Noise</div>
+    </div>
+    <div class="rewire-card">
+      <div class="letter">W</div>
+      <div class="word">WIRE</div>
+      <div class="desc">Your First Offer</div>
+    </div>
+    <div class="rewire-card">
+      <div class="letter">I</div>
+      <div class="word">INSTALL</div>
+      <div class="desc">Systems That Work With Your Brain</div>
+    </div>
+    <div class="rewire-card">
+      <div class="letter">R</div>
+      <div class="word">REVENUE</div>
+      <div class="desc">Before Scale</div>
+    </div>
+    <div class="rewire-card">
+      <div class="letter">E</div>
+      <div class="word">EXPAND</div>
+      <div class="desc">With Intention</div>
+    </div>
+  </div>
+
+  <hr class="gold-bar">
+
+  <p style="text-align: center; font-size: 9.5pt; color: #666;">Each step includes: <strong>teaching content</strong> + <strong>action worksheet</strong> + <strong>ADHD brain hack</strong></p>
+</div>
+
+<!-- ================================================================ -->
+<!-- STEP R — RECOGNIZE -->
+<!-- ================================================================ -->
+<div class="page-break"></div>
+<div class="section-header full-bleed">
+  <div class="step-label">Step 1 of 6</div>
+  <h2><span style="font-size: 28pt;">R</span> — RECOGNIZE</h2>
+  <div class="step-word">Your Unfair Advantage</div>
+  <div class="step-subtitle">"What you already know is worth money. You just can't see it yet."</div>
+</div>
+
+<div class="content">
+  <p>When you lose a job or go through a major life disruption, the first instinct is to start from scratch. New career. New skills. New everything. This is almost always wrong.</p>
+
+  <p>You have 10, 20, 30+ years of skills, knowledge, relationships, and hard-won expertise. The problem isn't that you have nothing to offer. The problem is that you're so close to your own experience that you can't see what other people would pay for.</p>
+
+  <p>Your unfair advantage is the intersection of three things: what you know how to do well, what you've survived that others haven't, and what people already come to you for (whether or not they pay you).</p>
+
+  <div class="pull-quote">
+    Professional Skills + Life Experience + What People Already Ask You For = Your Unfair Advantage
+  </div>
+
+  <h3>Examples of hidden unfair advantages:</h3>
+  <ul>
+    <li>A nurse who got fired and now helps other nurses negotiate wrongful termination claims</li>
+    <li>A project manager who went through divorce and now creates organizational systems for women starting over</li>
+    <li>A teacher with ADHD who figured out her own productivity system and teaches it to other neurodivergent women</li>
+    <li>A retail store owner who learned AI tools to save 15 hours/week and now teaches other small business owners to do the same</li>
+    <li>A paralegal who spent 20 years helping attorneys and now offers virtual legal admin services independently</li>
+  </ul>
+
+  <hr class="gold-bar-thin">
+
+  <div class="track-section track-b">
+    <span class="track-label track-label-b">Track B</span>
+    <h4 style="margin-top: 6px;">Existing Business Owners</h4>
+    <p>You already know your unfair advantage — it's the business you built. Your version of this step is different: you need to identify where you're doing work that a system or AI tool could handle for you. Your unfair advantage audit becomes an AI Opportunity Scan — where in your current business could technology save you 5+ hours per week?</p>
+  </div>
+
+  <div class="adhd-callout">
+    <div class="callout-label">ADHD Brain Hack</div>
+    <p>Don't try to answer these questions by thinking. Set a timer for 15 minutes. Open a blank page (paper or screen). Write whatever comes out — no editing, no judging, no organizing. The audit worksheet will help you sort it after.</p>
+  </div>
+
+  <hr class="gold-bar">
+
+  <!-- WORKSHEET: Unfair Advantage Audit -->
+  <div class="worksheet no-break">
+    <h3>Worksheet: Unfair Advantage Audit</h3>
+    <hr class="gold-bar-thin">
+
+    <div class="track-section track-a" style="padding: 8px 12px; margin-bottom: 12px;">
+      <span class="track-label track-label-a">Track A</span>
+      <strong style="margin-left: 6px; font-size: 9.5pt;">Starting From Zero</strong>
+    </div>
+
+    <label>1. List every job title you've held (include informal roles — PTA treasurer counts):</label>
+    <div class="worksheet-field worksheet-field-large"></div>
+
+    <label>2. What do people text/call/email you for help with? (Be specific)</label>
+    <div class="hint">Think: resume reviews, tech help, organizing, advice on ___, DIY projects...</div>
+    <div class="worksheet-field worksheet-field-large"></div>
+
+    <label>3. What have you survived that gave you knowledge most people don't have?</label>
+    <div class="hint">Divorce process. Medical system navigation. Wrongful termination. Starting over. ADHD diagnosis.</div>
+    <div class="worksheet-field worksheet-field-large"></div>
+
+    <label>4. What could you teach someone in 30 minutes without preparing?</label>
+    <div class="hint">This question usually reveals your real unfair advantage.</div>
+    <div class="worksheet-field"></div>
+
+    <label>5. YOUR UNFAIR ADVANTAGE STATEMENT (Draft — it will get better):</label>
+    <div class="hint">Template: I help [type of person] with [specific problem] because [why I'm credible].</div>
+    <div class="worksheet-field"></div>
+  </div>
+
+  <div class="worksheet no-break">
+    <div class="track-section track-b" style="padding: 8px 12px; margin-bottom: 12px;">
+      <span class="track-label track-label-b">Track B</span>
+      <strong style="margin-left: 6px; font-size: 9.5pt;">AI Opportunity Scan (Existing Business Owners)</strong>
+    </div>
+
+    <label>1. List every recurring task you do weekly in your business:</label>
+    <div class="hint">Invoicing, social media posting, responding to inquiries, scheduling, bookkeeping, ordering supplies...</div>
+    <div class="worksheet-field worksheet-field-large"></div>
+
+    <label>2. Which of those tasks do you HATE or always procrastinate on?</label>
+    <div class="hint">Circle or star the ones from above. These are your first AI candidates.</div>
+    <div class="worksheet-field"></div>
+
+    <label>3. How many hours per week do you spend on admin vs. revenue-generating work?</label>
+    <div class="hint">Be honest. Most small business owners spend 60–80% of time on non-revenue tasks.</div>
+    <div class="worksheet-field"></div>
+
+    <label>4. What tool or system would change your life if it existed?</label>
+    <div class="hint">"I wish I had something that would automatically ___" — Write that sentence.</div>
+    <div class="worksheet-field"></div>
+
+    <label>5. YOUR AI OPPORTUNITY STATEMENT:</label>
+    <div class="hint">Template: If I could automate [task], I'd save [X] hours/week and use that time to [revenue activity].</div>
+    <div class="worksheet-field"></div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- STEP E — ELIMINATE -->
+<!-- ================================================================ -->
+<div class="page-break"></div>
+<div class="section-header full-bleed">
+  <div class="step-label">Step 2 of 6</div>
+  <h2><span style="font-size: 28pt;">E</span> — ELIMINATE</h2>
+  <div class="step-word">The Noise</div>
+  <div class="step-subtitle">"Stop consuming. Start deciding."</div>
+</div>
+
+<div class="content">
+  <p>After a disruption, you enter what I call the Research Spiral. You Google. You watch YouTube videos. You sign up for free webinars. You buy a course. You join a Facebook group. You save 47 Instagram posts. You do everything except make a decision.</p>
+
+  <p>This isn't laziness. It's your brain trying to reduce risk by gathering more information. But here's what nobody tells you: more information doesn't create clarity. Decisions create clarity.</p>
+
+  <p>This step gives you a Decision Filter — five questions that kill bad ideas fast, so you stop chasing shiny objects and commit to ONE path.</p>
+
+  <hr class="gold-bar-thin">
+
+  <h3>The 5-Question Decision Filter:</h3>
+  <ol>
+    <li><strong>Can I get paid for this within 30 days?</strong> — If the answer is no, it's a hobby or a long-term play — not your next move when bills are due.</li>
+    <li><strong>Does this require me to build an audience first?</strong> — If yes, it's not your first income stream. Audience-dependent businesses (courses, content, coaching) need existing trust. Start with direct service.</li>
+    <li><strong>Am I excited about this, or am I excited about the IDEA of this?</strong> — There's a difference between wanting to be a consultant and wanting to be someone who says they're a consultant. Be honest.</li>
+    <li><strong>Can I explain what I'd sell in one sentence?</strong> — If you can't, your customer can't understand it either. Complexity is not sophistication — it's confusion.</li>
+    <li><strong>Does this fit my actual life right now?</strong> — Not your ideal life. Your real one. With the kids, the commute, the energy level, the bank account you actually have.</li>
+  </ol>
+
+  <hr class="gold-bar-thin">
+
+  <div class="track-section track-b">
+    <span class="track-label track-label-b">Track B</span>
+    <h4 style="margin-top: 6px;">Existing Business Owners</h4>
+    <p>Your noise isn't business ideas — it's tools and tactics. You've been told you need a better website, a TikTok strategy, a CRM, a booking system, an email funnel, SEO, and 14 other things. Your Decision Filter is simpler: What is the ONE bottleneck that, if fixed, would make you the most money or save the most time? Fix that first. Ignore everything else until it's done.</p>
+  </div>
+
+  <div class="adhd-callout">
+    <div class="callout-label">ADHD Brain Hack</div>
+    <p>Write down every idea, opportunity, or "I should" that's floating in your head right now. ALL of them. Get them out of your brain and onto paper. Then run each one through the 5-Question Filter. Most of them won't survive. That's the point. You're not losing ideas — you're gaining focus.</p>
+  </div>
+
+  <hr class="gold-bar">
+
+  <!-- WORKSHEET: Noise Elimination -->
+  <div class="worksheet">
+    <h3>Worksheet: The Noise Elimination Exercise</h3>
+    <hr class="gold-bar-thin">
+
+    <h4>Part 1: The Brain Dump</h4>
+    <p style="font-size: 9pt; color: #555; margin-bottom: 10px;">List every business idea, income opportunity, side hustle, or "I should" that's been circling your head. Include the ridiculous ones. No judgment.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px;">
+      <div><label>Idea 1:</label><div class="worksheet-field"></div></div>
+      <div><label>Idea 2:</label><div class="worksheet-field"></div></div>
+      <div><label>Idea 3:</label><div class="worksheet-field"></div></div>
+      <div><label>Idea 4:</label><div class="worksheet-field"></div></div>
+      <div><label>Idea 5:</label><div class="worksheet-field"></div></div>
+      <div><label>Idea 6:</label><div class="worksheet-field"></div></div>
+      <div><label>Idea 7:</label><div class="worksheet-field"></div></div>
+      <div><label>Idea 8:</label><div class="worksheet-field"></div></div>
+    </div>
+
+    <h4>Part 2: Run the Filter</h4>
+    <p style="font-size: 9pt; color: #555; margin-bottom: 10px;">Pick your top 3 ideas from above and run each through the Decision Filter.</p>
+
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th style="width: 36%;">Question</th>
+          <th>Idea 1</th>
+          <th>Idea 2</th>
+          <th>Idea 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Paid in 30 days?</td><td></td><td></td><td></td></tr>
+        <tr><td>Needs audience first?</td><td></td><td></td><td></td></tr>
+        <tr><td>Real excitement or fantasy?</td><td></td><td></td><td></td></tr>
+        <tr><td>One-sentence offer?</td><td></td><td></td><td></td></tr>
+        <tr><td>Fits real life now?</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <label>THE SURVIVOR: Which idea passed the most filters? Write it here. This is your focus.</label>
+    <div class="worksheet-field"></div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- STEP W — WIRE -->
+<!-- ================================================================ -->
+<div class="page-break"></div>
+<div class="section-header full-bleed">
+  <div class="step-label">Step 3 of 6</div>
+  <h2><span style="font-size: 28pt;">W</span> — WIRE</h2>
+  <div class="step-word">Your First Offer</div>
+  <div class="step-subtitle">"One person. One problem. One price."</div>
+</div>
+
+<div class="content">
+  <p>You don't need a website. You don't need a logo. You don't need business cards, an LLC, a brand color palette, or a social media strategy. You need one person willing to pay you for one thing.</p>
+
+  <p>Most people stall here because they try to build the entire business before they've confirmed anyone will pay. This is backwards. Your first offer should be so simple that you could deliver it with a phone call and a Google Doc.</p>
+
+  <div class="pull-quote">
+    I help [specific person] [solve specific problem] in [timeframe] for [price].
+  </div>
+
+  <h4>Good examples:</h4>
+  <ul>
+    <li>"I help first-time home sellers stage their house for photos in one weekend for $300."</li>
+    <li>"I help overwhelmed small business owners set up their bookkeeping in QuickBooks in 2 hours for $150."</li>
+    <li>"I help women going through divorce organize their financial documents in one session for $100."</li>
+    <li>"I help burned-out nurses rewrite their resume for non-clinical jobs in 48 hours for $200."</li>
+  </ul>
+
+  <h4>Bad examples (too vague):</h4>
+  <ul>
+    <li>"I'm a life coach." — For whom? Solving what?</li>
+    <li>"I help people with social media." — Which people? Which platform? What outcome?</li>
+    <li>"I'm a consultant." — This means nothing without specifics.</li>
+  </ul>
+
+  <hr class="gold-bar-thin">
+
+  <h3>Pricing Your First Offer:</h3>
+  <p>Your first offer is NOT about maximizing revenue. It's about getting a yes. Price it low enough that someone says yes without overthinking. You can raise prices after you have testimonials and proof. A $100 sale with a real testimonial is worth more than a $2,000 offer nobody buys.</p>
+
+  <hr class="gold-bar-thin">
+
+  <div class="track-section track-b">
+    <span class="track-label track-label-b">Track B</span>
+    <h4 style="margin-top: 6px;">Existing Business Owners</h4>
+    <p>Your version of "Wire" isn't creating a new offer — it's packaging what you already do into something clearer and easier to sell. Can you describe your main service in one sentence? Can a stranger understand it in 10 seconds? If not, this step helps you rewire your offer for clarity. You may also discover that AI can help you deliver your service faster — which means higher margins, not lower prices.</p>
+  </div>
+
+  <div class="adhd-callout">
+    <div class="callout-label">ADHD Brain Hack</div>
+    <p>Perfectionism will try to stop you here. It will say your offer isn't good enough, specific enough, polished enough. Ignore it. Write a bad first draft of your offer sentence. Send it to ONE person today. Not tomorrow. Today. Momentum beats perfection.</p>
+  </div>
+
+  <hr class="gold-bar">
+
+  <!-- WORKSHEET: One-Sentence Offer Builder -->
+  <div class="worksheet">
+    <h3>Worksheet: One-Sentence Offer Builder</h3>
+    <hr class="gold-bar-thin">
+    <p style="font-size: 9pt; color: #555; margin-bottom: 12px;">Fill in each piece separately, then combine them at the bottom.</p>
+
+    <label>Who is your SPECIFIC person? (Not "everyone" — one type of person)</label>
+    <div class="hint">Example: "Women over 40 who just got laid off from corporate jobs"</div>
+    <div class="worksheet-field"></div>
+
+    <label>What SPECIFIC problem do you solve for them?</label>
+    <div class="hint">Example: "They don't know how to translate corporate experience into freelance work"</div>
+    <div class="worksheet-field"></div>
+
+    <label>What do they GET from working with you? (Outcome, not process)</label>
+    <div class="hint">Example: "A polished freelance profile and 3 warm leads within 2 weeks"</div>
+    <div class="worksheet-field"></div>
+
+    <label>How do you DELIVER this? (Format — keep it simple)</label>
+    <div class="hint">1:1 call? Done-for-you service? Template + walkthrough? Group session?</div>
+    <div class="worksheet-field"></div>
+
+    <label>What's your STARTER PRICE?</label>
+    <div class="hint">Rule of thumb: charge what would make you show up and do great work, but low enough that a buyer says yes quickly.</div>
+    <div class="worksheet-field"></div>
+
+    <label>YOUR ONE-SENTENCE OFFER (combine everything above):</label>
+    <div class="hint">I help [person] [solve problem] by [delivery method] in [timeframe] for [price].</div>
+    <div class="worksheet-field"></div>
+
+    <hr class="gold-bar-thin">
+
+    <h4>First Customer Outreach Plan:</h4>
+    <p style="font-size: 9pt; color: #555; margin-bottom: 8px;">Who are 5 people in your life who either NEED this offer or KNOW someone who does? Write their names. You're texting them this week.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px;">
+      <div><label>Person 1:</label><div class="worksheet-field"></div></div>
+      <div><label>Person 2:</label><div class="worksheet-field"></div></div>
+      <div><label>Person 3:</label><div class="worksheet-field"></div></div>
+      <div><label>Person 4:</label><div class="worksheet-field"></div></div>
+      <div style="grid-column: 1;"><label>Person 5:</label><div class="worksheet-field"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- STEP I — INSTALL -->
+<!-- ================================================================ -->
+<div class="page-break"></div>
+<div class="section-header full-bleed">
+  <div class="step-label">Step 4 of 6</div>
+  <h2><span style="font-size: 28pt;">I</span> — INSTALL</h2>
+  <div class="step-word">Systems That Work With Your Brain</div>
+  <div class="step-subtitle">"Stop fighting your brain. Build around it."</div>
+</div>
+
+<div class="content">
+  <p>Most business advice was written for people with strong executive function — the ability to plan, prioritize, start tasks, and follow through without external structure. If you have ADHD or you're operating under extreme stress (which hijacks executive function even in neurotypical brains), this advice fails you.</p>
+
+  <p>You don't need more discipline. You need better systems — external structures that do the executive function work your brain won't do on its own.</p>
+
+  <p>This step installs a simple operating system for your business and your brain. It has three components: a Brain Dump System, a Daily Priority System, and a Parking Lot.</p>
+
+  <hr class="gold-bar-thin">
+
+  <h3>The Three Components:</h3>
+
+  <h4>1. The Brain Dump System</h4>
+  <p>Your brain generates ideas, worries, and to-do's 24/7. If they don't have a place to go, they circle endlessly and create anxiety. The Brain Dump is a designated place — a notebook, a Google Doc, a note on your phone — where EVERYTHING goes. No organizing. No categorizing. Just capture. You process it later during your Daily Priority session.</p>
+
+  <h4>2. The Daily 3 Priority System</h4>
+  <p>Every morning (or the night before), you pick THREE things from your Brain Dump. Not ten. Not seven. Three. These are your 1-Now items. Everything else is 2-Next or 3-Later. If you finish your three, you can pick more. But you START with three. This prevents the ADHD overwhelm spiral of staring at a massive list and doing nothing.</p>
+
+  <h4>3. The Parking Lot</h4>
+  <p>Ideas, opportunities, and "what if I should" thoughts that pop into your head mid-task? They go to the Parking Lot. Not deleted. Not acted on. Parked. They're safe. They're captured. You'll review the Parking Lot once a week. This single system will save you hours of distraction-driven rabbit holes.</p>
+
+  <hr class="gold-bar-thin">
+
+  <h3>Where to Set This Up (Choose One):</h3>
+  <ul>
+    <li><strong>Paper (The Steno Pad Method):</strong> Use a physical notebook. Left page = Brain Dump. Right page = Today's 3. Back of notebook = Parking Lot. Flip to a new spread each day.</li>
+    <li><strong>Phone Notes App:</strong> Create three notes: "Brain Dump," "Today's 3," and "Parking Lot." Pin them to the top. That's it.</li>
+    <li><strong>Google Sheets (included with this Blueprint):</strong> A pre-formatted spreadsheet with tabs for Brain Dump, Daily 3, Weekly Review, and Parking Lot. Color-coded. No formulas to break.</li>
+    <li><strong>Notion (for the tech-comfortable):</strong> If you already use Notion, the logic transfers directly. Create a database with Priority (1-Now, 2-Next, 3-Later) and Status (Backlog, This Week, In Progress, Done, Parked) properties.</li>
+  </ul>
+
+  <hr class="gold-bar-thin">
+
+  <h3>Where AI Plugs In:</h3>
+  <p>AI doesn't replace your system. It accelerates what's inside it. Once you have your Daily 3, you can hand tasks to AI:</p>
+  <ul>
+    <li>"Write a first draft of my offer description" — AI drafts, you edit</li>
+    <li>"Summarize this article into 3 action steps" — AI does the reading for you</li>
+    <li>"Create 5 subject lines for this email" — AI generates, you pick</li>
+    <li>"Turn my messy notes into a clear outline" — AI organizes your Brain Dump</li>
+  </ul>
+
+  <div class="adhd-callout">
+    <div class="callout-label">ADHD Brain Hack</div>
+    <p>The system only works if it's simple enough to use when you're at your worst — tired, stressed, distracted. If it takes more than 60 seconds to capture a thought or identify your next task, it's too complex. Simplify until it feels almost too easy.</p>
+  </div>
+
+  <hr class="gold-bar">
+
+  <!-- WORKSHEET -->
+  <div class="worksheet">
+    <h3>Worksheet: Your Personal Operating System Setup</h3>
+    <hr class="gold-bar-thin">
+    <p style="font-size: 9pt; color: #555; margin-bottom: 12px;">Choose your tools and set up your system right now. Don't overthink this — you can change it later.</p>
+
+    <h4>1. Choose Your Tools:</h4>
+    <label>Brain Dump location: <span class="hint" style="display: inline;">(notebook / phone / Google Sheet / other)</span></label>
+    <div class="worksheet-field"></div>
+
+    <label>Daily 3 location: <span class="hint" style="display: inline;">(same place or separate?)</span></label>
+    <div class="worksheet-field"></div>
+
+    <label>Parking Lot location:</label>
+    <div class="worksheet-field"></div>
+
+    <label>When will you do your Daily 3 selection? <span class="hint" style="display: inline;">Morning / Night before (circle one)</span></label>
+    <div class="worksheet-field"></div>
+
+    <label>When will you review your Parking Lot? Day:</label>
+    <div class="worksheet-field"></div>
+
+    <h4>2. Brain Dump — Do It Now:</h4>
+    <p style="font-size: 9pt; color: #555; margin-bottom: 8px;">Set a timer for 10 minutes. Write EVERYTHING that's in your head — tasks, worries, ideas, appointments, things you're avoiding, dreams, errands. Go.</p>
+    <div class="worksheet-field worksheet-field-xl"></div>
+
+    <h4>3. Pick Tomorrow's 3:</h4>
+    <p style="font-size: 9pt; color: #555; margin-bottom: 8px;">From the Brain Dump above, pick the THREE most important actions for tomorrow. Not the most urgent. The most important for moving your business forward.</p>
+    <label>Priority 1:</label>
+    <div class="worksheet-field"></div>
+    <label>Priority 2:</label>
+    <div class="worksheet-field"></div>
+    <label>Priority 3:</label>
+    <div class="worksheet-field"></div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- STEP R — REVENUE -->
+<!-- ================================================================ -->
+<div class="page-break"></div>
+<div class="section-header full-bleed">
+  <div class="step-label">Step 5 of 6</div>
+  <h2><span style="font-size: 28pt;">R</span> — REVENUE</h2>
+  <div class="step-word">Before Scale</div>
+  <div class="step-subtitle">"Get paid before you optimize. Proof of concept comes before perfection."</div>
+</div>
+
+<div class="content">
+  <p>This is the step most people skip. They go from "I have an idea" to "let me build a website and create an Instagram strategy and write a 12-email sequence" — and then wonder why they're not making money six months later.</p>
+
+  <p>Your goal for this step is simple: your first $500. Not $10K. Not $5K. Five hundred dollars from real humans who paid you real money for real value. That's your proof of concept. Everything else is theory until money moves.</p>
+
+  <hr class="gold-bar-thin">
+
+  <h3>The 30-Day Revenue Sprint:</h3>
+
+  <div class="sprint-week">
+    <div class="week-label">Week 1 — Warm Outreach</div>
+    <p>Tell 10 people what you're offering. Not a sales pitch — a conversation. "Hey, I'm starting to offer [thing] for [people]. Do you know anyone who needs this?" Text, email, DM, phone call. Ten people this week.</p>
+  </div>
+
+  <div class="sprint-week">
+    <div class="week-label">Week 2 — First Delivery</div>
+    <p>Deliver your offer to at least one person. It can be discounted. It can be messy. The goal is completion and feedback, not perfection. Ask: "Would you recommend this? What would make it better?"</p>
+  </div>
+
+  <div class="sprint-week">
+    <div class="week-label">Week 3 — Refine and Re-offer</div>
+    <p>Take the feedback from Week 2. Adjust the offer. Reach out to 10 MORE people — this time with a testimonial or result from your first client. Social proof changes everything.</p>
+  </div>
+
+  <div class="sprint-week">
+    <div class="week-label">Week 4 — Stack and Repeat</div>
+    <p>You now have: a clear offer, at least one testimonial, and a delivery process. Your job is to keep reaching out. The unsexy truth: revenue at this stage comes from consistent outreach, not from funnels or followers.</p>
+  </div>
+
+  <hr class="gold-bar-thin">
+
+  <h3>What You DON'T Need Yet:</h3>
+  <ul>
+    <li>A website (use DMs, email, or a simple Carrd page)</li>
+    <li>A business name or LLC (you can formalize later)</li>
+    <li>A social media following (you have a phone with contacts — use it)</li>
+    <li>A logo (nobody ever bought a service because the logo was pretty)</li>
+    <li>A booking system ("Does Tuesday at 2 work?" is a booking system)</li>
+  </ul>
+
+  <div class="adhd-callout">
+    <div class="callout-label">ADHD Brain Hack</div>
+    <p>The outreach feels terrifying. That's normal. Here's the trick: batch it. Set a timer for 20 minutes. Send all 10 messages in that window. Don't think between sends. Just go. The anxiety is worst before you start. It drops dramatically after the first three messages.</p>
+  </div>
+
+  <hr class="gold-bar">
+
+  <!-- WORKSHEET: 30-Day Revenue Sprint Tracker -->
+  <div class="worksheet">
+    <h3>Worksheet: 30-Day Revenue Sprint Tracker</h3>
+    <hr class="gold-bar-thin">
+    <p style="font-size: 9pt; color: #555; margin-bottom: 10px;">Track your outreach and results. This is your accountability sheet.</p>
+
+    <h4>Week 1: Warm Outreach (10 People)</h4>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th style="width: 6%;">#</th>
+          <th style="width: 32%;">Name</th>
+          <th style="width: 32%;">How I Reached Out</th>
+          <th style="width: 30%;">Response</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td></td><td></td><td></td></tr>
+        <tr><td>2</td><td></td><td></td><td></td></tr>
+        <tr><td>3</td><td></td><td></td><td></td></tr>
+        <tr><td>4</td><td></td><td></td><td></td></tr>
+        <tr><td>5</td><td></td><td></td><td></td></tr>
+        <tr><td>6</td><td></td><td></td><td></td></tr>
+        <tr><td>7</td><td></td><td></td><td></td></tr>
+        <tr><td>8</td><td></td><td></td><td></td></tr>
+        <tr><td>9</td><td></td><td></td><td></td></tr>
+        <tr><td>10</td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <label>First paying client name + what they paid for:</label>
+    <div class="worksheet-field"></div>
+
+    <label>Feedback received:</label>
+    <div class="worksheet-field worksheet-field-large"></div>
+
+    <label>Total revenue earned this month: $</label>
+    <div class="worksheet-field"></div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- STEP E — EXPAND -->
+<!-- ================================================================ -->
+<div class="page-break"></div>
+<div class="section-header full-bleed">
+  <div class="step-label">Step 6 of 6</div>
+  <h2><span style="font-size: 28pt;">E</span> — EXPAND</h2>
+  <div class="step-word">With Intention</div>
+  <div class="step-subtitle">"Scale what's proven. Not what's exciting."</div>
+</div>
+
+<div class="content">
+  <p>Congratulations — if you're here, you have revenue. Someone paid you real money. You have proof that your unfair advantage translates into value. Now the question becomes: what do you build next?</p>
+
+  <p>This is where most entrepreneurs go wrong for the second time. They get their first win and immediately try to scale everything — launch a course, build a membership, create a product suite, hire a VA, run ads. And they burn out again.</p>
+
+  <p>Expansion follows evidence, not enthusiasm. You only build the next thing when the current thing is working consistently.</p>
+
+  <hr class="gold-bar-thin">
+
+  <h3>The Expansion Decision Tree:</h3>
+  <ul>
+    <li><strong>IF you have 1–3 clients:</strong> Your job is to get to 5. Keep doing outreach. Do NOT build products yet.</li>
+    <li><strong>IF you have 5+ clients and consistent income:</strong> Now you can systematize — create templates, write SOPs, use AI to speed up delivery.</li>
+    <li><strong>IF you're maxed on time:</strong> Raise prices before adding products. A $200 offer with 10 clients = $2,000. A $400 offer with 10 clients = $4,000. Same work, double revenue.</li>
+    <li><strong>IF clients keep asking for the same additional thing:</strong> That's your next offer. Don't guess — let demand tell you.</li>
+    <li><strong>IF you want to build a digital product:</strong> Only after you've delivered the service version at least 10 times. Your course/template/guide is built FROM client experience, not from theory.</li>
+  </ul>
+
+  <hr class="gold-bar-thin">
+
+  <h3>When to Add Marketing Channels:</h3>
+  <ul>
+    <li><strong>Pinterest:</strong> Best for long-term SEO. Start when you have a product/offer page to link to. Pins have a 3–6 month lifespan (unlike social posts that die in 24 hours).</li>
+    <li><strong>Instagram:</strong> Best for building trust and community. Start when you can commit to showing up 3–4x per week. Requires consistency more than quality.</li>
+    <li><strong>Email list:</strong> Start collecting emails from Day 1, even if you don't send anything yet. A free resource (checklist, template) in exchange for an email address. This is the only channel you OWN.</li>
+    <li><strong>Paid ads:</strong> ONLY after you have a proven offer with a known conversion rate. Never run ads to an unvalidated offer.</li>
+  </ul>
+
+  <div class="adhd-callout">
+    <div class="callout-label">ADHD Brain Hack</div>
+    <p>Expansion is where shiny object syndrome hits hardest. You'll see other people doing things that look more exciting than what you're doing. Remind yourself: they're showing you their highlight reel, not their P&amp;L. Stay in your lane until the evidence says it's time to add a lane.</p>
+  </div>
+
+  <hr class="gold-bar">
+
+  <!-- WORKSHEET: Expansion Decision Matrix -->
+  <div class="worksheet">
+    <h3>Worksheet: Expansion Decision Matrix</h3>
+    <hr class="gold-bar-thin">
+    <p style="font-size: 9pt; color: #555; margin-bottom: 12px;">Answer honestly. Your expansion plan comes from these answers, not from inspiration.</p>
+
+    <label>How many paying clients do I have right now?</label>
+    <div class="worksheet-field"></div>
+
+    <label>What is my average revenue per client?</label>
+    <div class="worksheet-field"></div>
+
+    <label>Am I maxed on time? (Yes/No) If yes, at how many hours/week?</label>
+    <div class="worksheet-field"></div>
+
+    <label>What do clients ask me for that I DON'T currently offer?</label>
+    <div class="worksheet-field"></div>
+
+    <label>What is the ONE thing that would double my revenue without doubling my time?</label>
+    <div class="worksheet-field"></div>
+
+    <h4>My Next Move (choose ONE):</h4>
+    <div class="checklist-item"><div class="checklist-box"></div><span>Get more clients at current price (outreach sprint)</span></div>
+    <div class="checklist-item"><div class="checklist-box"></div><span>Raise prices with existing clients</span></div>
+    <div class="checklist-item"><div class="checklist-box"></div><span>Systematize delivery with AI/templates to serve more people</span></div>
+    <div class="checklist-item"><div class="checklist-box"></div><span>Create a digital product from my most-requested service</span></div>
+    <div class="checklist-item"><div class="checklist-box"></div><span>Start one marketing channel (Pinterest OR Instagram — not both yet)</span></div>
+    <div class="checklist-item"><div class="checklist-box"></div><span>Build an email list with a free lead magnet</span></div>
+
+    <div style="margin-top: 14px;">
+      <label>MY 90-DAY EXPANSION GOAL (one sentence, specific, measurable):</label>
+      <div class="hint">Example: "Go from 3 clients to 8 clients at $300 each = $2,400/month by [date]."</div>
+      <div class="worksheet-field"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- FINAL PAGE: WHAT HAPPENS NEXT -->
+<!-- ================================================================ -->
+<div class="page-break"></div>
+<div class="back-page">
+  <div class="monogram-border" style="border-color: var(--gold); margin-bottom: 24px;">
+    <div class="monogram" style="font-size: 28pt;">R&R</div>
+  </div>
+
+  <h2 style="font-family: 'Lora', Georgia, serif; font-size: 18pt; color: #fff; margin-bottom: 16px;">What Happens Next</h2>
+
+  <div style="width: 160px; height: 2px; background: var(--gold-gradient); margin: 0 auto 20px;"></div>
+
+  <p style="font-size: 10pt; color: var(--cream); max-width: 5in; margin-bottom: 10px;">You now have a complete system. Not theory. Not inspiration. A system.</p>
+
+  <p style="font-size: 10pt; color: var(--cream); max-width: 5in; margin-bottom: 10px;">The REWIRE Method works when you work it. That means completing the worksheets, sending the outreach messages, making the offer, and tracking the revenue. It means using the Parking Lot instead of chasing every idea. It means picking three priorities instead of drowning in fifteen.</p>
+
+  <p style="font-size: 10pt; color: var(--cream); max-width: 5in; margin-bottom: 20px;">If you're reading this and you haven't done the worksheets yet — go back. Right now. Start with the Unfair Advantage Audit. Set a timer for 15 minutes. Fill in whatever you can. Messy counts. Perfect doesn't exist.</p>
+
+  <div class="closing-quote">"Movement creates clarity. Clarity does not create movement."</div>
+
+  <div style="width: 160px; height: 2px; background: var(--gold-gradient); margin: 20px auto;"></div>
+
+  <h3 style="font-family: 'Lora', Georgia, serif; font-size: 12pt; color: var(--gold-light); margin-bottom: 12px;">Stay Connected</h3>
+  <div class="links"><strong>Website:</strong> rebuiltandrewired.com</div>
+  <div class="links"><strong>Instagram:</strong> @rebuiltandrewired</div>
+  <div class="links"><strong>Pinterest:</strong> @rebuiltandrewired</div>
+
+  <div style="width: 100px; height: 1px; background: rgba(180, 149, 84, 0.4); margin: 24px auto;"></div>
+
+  <div class="built-line">Built with grit by Nicole Morales.</div>
+  <div class="dedication">For every woman who was told to start over<br>and is figuring out how.</div>
+
+  <div class="final-copyright">
+    © 2026 Nicole Morales / Rebuilt &amp; Rewired. All rights reserved.<br>
+    The REWIRE Method™ is a trademark of Rebuilt &amp; Rewired.<br>
+    This Blueprint is for personal use only. Do not redistribute without written permission.
+  </div>
+</div>
+
+</body>
+</html>
